@@ -1,1 +1,32 @@
-@import "./base.css";
+/* 自定义arco主题变量 */
+/* 
+  .coverageArcoDesignVariables {
+    --color-bg-1: #f4f4f4;
+  }
+  body[arco-theme="dark"].coverageArcoDesignVariables {
+    --color-bg-1: #353535;
+  } 
+*/
+
+/* 将菜单wrap改为flex布局 */
+.arco-menu-overflow-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+/* 菜单中字体可以根据屏幕宽度慢慢改变 */
+.arco-menu {
+  font-size: clamp(14px, 0.9rem, 20px) !important;
+}
+/* 隐藏主题切换按钮底部选中状态 */
+.theme-switch .arco-menu-selected-label {
+  opacity: 0;
+}
+
+html {
+  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+}
+#app {
+  min-height: 100vh;
+  /* min-width: 1024px; */
+}
