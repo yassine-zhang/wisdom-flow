@@ -1,4 +1,5 @@
 <template>
+  <!-- menu -->
   <div
     class="menu-demo flex bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
   >
@@ -44,27 +45,39 @@
     </a-menu>
   </div>
 
-  <div class="flex flex-col items-center mt-1/16 px-4">
-    <div
-      class="font-bold leading-tight text-[var(--color-text-1)] text-5xl text-center"
-    >
-      知识“慧”聚成河<span class="lt-sm:hidden ___">，</span
-      ><br class="lt-sm:inline hidden" /><span class="gradient-text"
-        >意义自然浮现</span
+  <div class="lt-md:px-4 px-8">
+    <!-- hero -->
+    <div class="flex flex-col items-center mt-1/16">
+      <div
+        class="font-bold leading-tight text-[var(--color-text-1)] text-5xl text-center"
+      >
+        知识“慧”聚成河<span class="lt-sm:hidden ___">，</span
+        ><br class="lt-sm:inline hidden" /><span class="gradient-text"
+          >意义自然浮现</span
+        >
+      </div>
+      <div
+        class="leading-none mt-8 leading-snug text-[var(--color-text-1)] text-xl text-center"
+      >
+        记录高价值知识笔记，<br class="lt-sm:inline hidden" />
+        在巩固自身的同时，获得一笔收入
+      </div>
+      <button class="button-8 mt-12 mb-2 scale-120" role="button">
+        免费注册
+      </button>
+      <p class="hover:underline cursor-pointer text-[var(--color-text-2)]">
+        已经有账号？点此登录
+      </p>
+      <img
+        src="@/assets/images/device-demo.png"
+        alt="device-demo"
+        class="my-5 lt-md:w-100% w-85%"
+      />
+      <a-alert class="lt-md:w-100% w-85%" type="warning"
+        >知慧流项目仍在开发中，以上实机演示仅供参考！</a-alert
       >
     </div>
-    <div
-      class="leading-none mt-8 leading-snug text-[var(--color-text-1)] text-xl text-center"
-    >
-      记录高价值知识笔记，<br class="lt-sm:inline hidden" />
-      在巩固自身的同时，获得一笔收入
-    </div>
-    <button class="button-8 mt-12 mb-2 scale-120" role="button">
-      免费注册
-    </button>
-    <p class="hover:underline cursor-pointer text-[var(--color-text-2)]">
-      已经有账号？点此登录
-    </p>
+    <a-divider class="mt-20 mb-5" />
   </div>
 </template>
 <script setup lang="ts">
@@ -111,7 +124,7 @@ onUnmounted(() => {
     #30c7ec 47%,
     #46aef7 100%
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
