@@ -1,3 +1,5 @@
+@import url("./css/reset.css");
+
 /* 自定义arco主题变量 */
 /* 
   .coverageArcoDesignVariables {
@@ -15,18 +17,34 @@
   align-items: center;
 }
 /* 菜单中字体可以根据屏幕宽度慢慢改变 */
-.arco-menu {
+.arco-menu,
+.menu-text {
   font-size: clamp(14px, 0.9rem, 20px) !important;
 }
+
 /* 隐藏主题切换按钮底部选中状态 */
 .theme-switch .arco-menu-selected-label {
   opacity: 0;
 }
 
+/* space item的父级宽度100% */
+.arco-space {
+  width: 100%;
+}
+/* 第一个space的item宽度自适应 */
+.arco-space .arco-space-item:nth-child(1) {
+  flex: 1;
+}
+
 html {
   font-size: clamp(0.85rem, 1.5vw, 1.1rem);
 }
-#app {
-  min-height: 100vh;
-  /* min-width: 1024px; */
+
+@font-face {
+  font-family: "AliMaMaFangYuanCF-Regular";
+  src:
+    url("./fonts/logo/8P7hiKF62nvu.woff2") format("woff2"),
+    url("./fonts/logo/8P7hiKF62nvu.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }

@@ -32,7 +32,7 @@ const checkWindowSize = () => {
  */
 const handleWindowTooSmall = () => {
   // 在这里处理窗口过小的逻辑
-  Message.warning("窗口太小了！可能会影响你的使用体验！");
+  Message.info("为了您更好的体验，请使用宽屏设备浏览");
 };
 
 const applyWindowSize = () => {

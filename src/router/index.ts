@@ -9,6 +9,24 @@ const router = createRouter({
       name: "home",
       component: HomeView,
     },
+    {
+      path: "/user",
+      component: () => import("@/views/user/BasicView.vue"),
+      children: [
+        {
+          path: "login",
+          component: () => import("@/views/user/UserLogin.vue"),
+        },
+        {
+          path: "register",
+          component: () => import("@/views/user/UserRegister.vue"),
+        },
+      ],
+    },
+    {
+      path: "/uvu",
+      component: () => import("@/views/FlowCenter.vue"),
+    },
   ],
 });
 

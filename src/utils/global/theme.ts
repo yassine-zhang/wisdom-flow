@@ -39,11 +39,7 @@ const getThemeFromLocalStorage = (enabledSystemTheme: boolean = false) => {
  * 如果为null或undefined，则从localStorage中移除主题信息
  */
 const setThemeToLocalStorage = (theme: string | boolean) => {
-  if (theme) {
-    localStorage.setItem("theme", theme.toString());
-  } else {
-    localStorage.removeItem("theme");
-  }
+  localStorage.setItem("theme", theme.toString());
 };
 
 /**
@@ -54,9 +50,8 @@ const setThemeToLocalStorage = (theme: string | boolean) => {
  */
 const restoreLightTheme = (storage: boolean = true) => {
   document.body.removeAttribute("arco-theme");
-  // toggleThemeValue.value = false;
   themeValue.value = false;
-  if (storage) setThemeToLocalStorage(false);
+  if (storage) setThemeToLocalStorage("light");
 };
 
 /**
@@ -66,7 +61,6 @@ const restoreLightTheme = (storage: boolean = true) => {
  */
 const setBlackTheme = (storage: boolean = true) => {
   document.body.setAttribute("arco-theme", "dark");
-  // toggleThemeValue.value = true;
   themeValue.value = true;
   if (storage) setThemeToLocalStorage("dark");
 };

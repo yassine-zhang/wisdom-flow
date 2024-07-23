@@ -1,98 +1,103 @@
 <template>
-  <!-- menu -->
-  <div
-    class="menu-demo flex bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
-  >
+  <div class="min-h-screen">
+    <!-- menu -->
     <div
-      class="flex-none my-5 mx-[14px] w-20 h-8 rounded-sm cursor-pointer bg-[var(--color-fill-2)]"
-    ></div>
-    <a-menu
-      class="flex-initial"
-      :collapsed-width="360"
-      mode="horizontal"
-      breakpoint="sm"
-      :default-selected-keys="[]"
+      class="menu-demo flex bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
     >
-      <a-menu-item key="1">进入知慧流中心</a-menu-item>
-      <a-menu-item key="2">会员定价</a-menu-item>
-      <a-menu-item key="3">帮助中心</a-menu-item>
-      <a-menu-item key="4">发表建议</a-menu-item>
-      <a-menu-item
-        key="5"
-        disabled
-        class="hidden md:inline-block cursor-default ml-1 px-0"
-      >
-        <a-divider direction="vertical" />
-      </a-menu-item>
-      <a-menu-item key="6" class="ml-0 p-1 theme-switch">
-        <a-switch
-          v-model="toggleThemeValue"
-          size="medium"
-          @click="toggleTheme()"
-        >
-          <template #checked-icon>
-            <div class="flex items-center justify-center">
-              <Icon icon="ph:moon-fill" />
-            </div>
-          </template>
-          <template #unchecked-icon>
-            <div class="flex items-center justify-center">
-              <Icon icon="tabler:sun-filled" width="16px" height="16px" />
-            </div>
-          </template>
-        </a-switch>
-      </a-menu-item>
-    </a-menu>
-  </div>
-
-  <div class="lt-md:px-4 px-8">
-    <!-- hero -->
-    <div class="flex flex-col items-center mt-1/16">
       <div
-        class="font-bold leading-tight text-[var(--color-text-1)] text-5xl text-center"
+        class="flex-none my-5 mx-[14px] h-8 rounded-sm cursor-pointer flex items-center"
       >
-        知识“慧”聚成河<span class="lt-sm:hidden ___">，</span
-        ><br class="lt-sm:inline hidden" /><span class="gradient-text"
-          >意义自然浮现</span
+        <span
+          style="color: rgb(var(--arcoblue-6))"
+          class="font-['AliMaMaFangYuanCF-Regular'] text-xl font-bold"
+          >知慧flow</span
         >
       </div>
-      <div
-        class="leading-none mt-8 leading-snug text-[var(--color-text-1)] text-xl text-center"
+      <a-menu
+        class="flex-initial"
+        :collapsed-width="360"
+        mode="horizontal"
+        breakpoint="sm"
+        :default-selected-keys="[]"
       >
-        记录高价值知识笔记，<br class="lt-sm:inline hidden" />
-        在巩固自身的同时，获得一笔收入
-      </div>
-      <button class="button-8 mt-12 mb-2 scale-120" role="button">
-        免费注册
-      </button>
-      <p class="hover:underline cursor-pointer text-[var(--color-text-2)]">
-        已经有账号？点此登录
-      </p>
-      <img
-        src="@/assets/images/device-demo.png"
-        alt="device-demo"
-        class="my-5 lt-md:w-100% w-85%"
-      />
-      <a-alert class="lt-md:w-100% w-85%" type="warning"
-        >知慧流项目仍在开发中，以上实机演示仅供参考！</a-alert
-      >
+        <a-menu-item key="1"
+          ><RouterLink to="/uvu">进入flow中心</RouterLink></a-menu-item
+        >
+        <a-menu-item key="2">会员定价</a-menu-item>
+        <a-menu-item key="3">帮助中心</a-menu-item>
+        <a-menu-item key="4">发表建议</a-menu-item>
+        <a-menu-item
+          key="5"
+          disabled
+          class="hidden md:inline-block cursor-default ml-1 px-0"
+        >
+          <a-divider direction="vertical" />
+        </a-menu-item>
+        <a-menu-item key="6" class="ml-0 p-1 theme-switch">
+          <a-switch
+            v-model="toggleThemeValue"
+            size="medium"
+            @click="toggleTheme()"
+          >
+            <template #checked-icon>
+              <div class="flex items-center justify-center">
+                <Icon icon="ph:moon-fill" />
+              </div>
+            </template>
+            <template #unchecked-icon>
+              <div class="flex items-center justify-center">
+                <Icon icon="tabler:sun-filled" width="16px" height="16px" />
+              </div>
+            </template>
+          </a-switch>
+        </a-menu-item>
+      </a-menu>
     </div>
-    <a-divider class="mt-20 mb-5" />
+    <a-alert class="w-100%" type="info"
+      >知慧flow项目处于初步开发阶段，一切演示功能不代表最终成品！</a-alert
+    >
+    <div class="lt-md:px-4 px-8">
+      <!-- hero -->
+      <div class="flex flex-col items-center mt-1/16">
+        <div
+          class="font-bold leading-tight text-[var(--color-text-1)] text-5xl text-center"
+        >
+          知识“慧”聚成河<span class="lt-sm:hidden ___">，</span
+          ><br class="lt-sm:inline hidden" /><span class="gradient-text"
+            >意义自然浮现</span
+          >
+        </div>
+        <div
+          class="leading-none mt-8 leading-snug text-[var(--color-text-1)] text-xl text-center"
+        >
+          记录高价值知识笔记，<br class="lt-sm:inline hidden" />
+          在巩固自身的同时，获得一笔收入
+        </div>
+        <RouterLink to="/user/register">
+          <button class="button-8 mt-12 mb-4 scale-120" role="button">
+            免费注册
+          </button></RouterLink
+        >
+        <RouterLink to="/user/login">
+          <p class="hover:underline cursor-pointer text-[var(--color-text-2)]">
+            已经有账号？点此登录
+          </p>
+        </RouterLink>
+
+        <img
+          src="@/assets/images/device-demo.png"
+          alt="device-demo"
+          class="my-5 lt-md:w-100% w-85%"
+        />
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { Icon } from "@iconify/vue";
-import {
-  unMountedThemeEventListener,
-  applyTheme,
-  toggleTheme,
-  themeValue,
-} from "@/utils/global/theme";
-import {
-  applyWindowSize,
-  unMountedWinSizeEventListener,
-} from "@/utils/global/window-size";
+import { toggleTheme, themeValue } from "@/utils/global/theme";
+import { RouterLink } from "vue-router";
 
 const toggleThemeValue = ref(false);
 watch(themeValue, (newVal) => {
@@ -100,19 +105,16 @@ watch(themeValue, (newVal) => {
 });
 
 onMounted(() => {
-  applyTheme();
-  applyWindowSize();
-});
-
-onUnmounted(() => {
-  unMountedThemeEventListener();
-  unMountedWinSizeEventListener();
+  toggleThemeValue.value = themeValue.value;
 });
 </script>
 <style scoped>
-.menu-demo {
-  box-sizing: border-box;
+/* menu */
+.arco-menu-item > a,
+button > a {
   width: 100%;
+  height: 100%;
+  display: inline-block;
 }
 
 .gradient-text {
