@@ -48,3 +48,10 @@ html {
   font-weight: normal;
   font-style: normal;
 }
+
+/* 媒体查询控制menu在移动端样式兼容计划 */
+@media screen and (max-width: 639.9px) {
+  .arco-menu-inner {
+    padding-left: 0px !important;
+  }
+}

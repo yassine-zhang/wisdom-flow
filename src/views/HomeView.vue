@@ -2,7 +2,7 @@
   <div class="min-h-screen">
     <!-- menu -->
     <div
-      class="menu-demo flex bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
+      class="menu-demo flex justify-between bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
     >
       <div
         class="flex-none my-5 mx-[14px] h-8 rounded-sm cursor-pointer flex items-center"
@@ -13,45 +13,60 @@
           >知慧flow</span
         >
       </div>
-      <a-menu
-        class="flex-initial"
-        :collapsed-width="360"
-        mode="horizontal"
-        breakpoint="sm"
-        :default-selected-keys="[]"
-      >
-        <a-menu-item key="1"
-          ><RouterLink to="/uvu">进入flow中心</RouterLink></a-menu-item
+      <div class="flex-1 flex items-center justify-end">
+        <ul
+          class="h-full flex-1 flex items-center justify-end sm:hidden text-[var(--color-text-2)]"
         >
-        <a-menu-item key="2">会员定价</a-menu-item>
-        <a-menu-item key="3">帮助中心</a-menu-item>
-        <a-menu-item key="4">发表建议</a-menu-item>
-        <a-menu-item
-          key="5"
-          disabled
-          class="hidden md:inline-block cursor-default ml-1 px-0"
-        >
-          <a-divider direction="vertical" />
-        </a-menu-item>
-        <a-menu-item key="6" class="ml-0 p-1 theme-switch">
-          <a-switch
-            v-model="toggleThemeValue"
-            size="medium"
-            @click="toggleTheme()"
+          <li class="box-border py-5 h-full">
+            <RouterLink
+              class="h-full flex items-center px-2 text-[var(--color-text-2)] hover:bg-[var(--color-fill-2)] decoration-none"
+              to="/uvu"
+              >进入flow中心</RouterLink
+            >
+          </li>
+          <li class="box-border py-5 h-full">
+            <a
+              class="h-full flex items-center px-2 text-[var(--color-text-2)] hover:bg-[var(--color-fill-2)] decoration-none"
+              target="_self"
+              href="#"
+              >会员定价</a
+            >
+          </li>
+        </ul>
+        <a-menu class="lt-sm:w-auto" mode="horizontal">
+          <a-menu-item class="lt-sm:hidden" key="1"
+            ><RouterLink to="/uvu">进入flow中心</RouterLink></a-menu-item
           >
-            <template #checked-icon>
-              <div class="flex items-center justify-center">
-                <Icon icon="ph:moon-fill" />
-              </div>
-            </template>
-            <template #unchecked-icon>
-              <div class="flex items-center justify-center">
-                <Icon icon="tabler:sun-filled" width="16px" height="16px" />
-              </div>
-            </template>
-          </a-switch>
-        </a-menu-item>
-      </a-menu>
+          <a-menu-item class="lt-sm:hidden" key="2">会员定价</a-menu-item>
+          <a-menu-item key="3">帮助中心</a-menu-item>
+          <a-menu-item key="4">发表建议</a-menu-item>
+          <a-menu-item
+            key="5"
+            disabled
+            class="hidden md:inline-block cursor-default ml-1 px-0"
+          >
+            <a-divider direction="vertical" />
+          </a-menu-item>
+          <a-menu-item key="6" class="ml-0 p-1 theme-switch">
+            <a-switch
+              v-model="toggleThemeValue"
+              size="medium"
+              @click="toggleTheme()"
+            >
+              <template #checked-icon>
+                <div class="flex items-center justify-center">
+                  <Icon icon="ph:moon-fill" />
+                </div>
+              </template>
+              <template #unchecked-icon>
+                <div class="flex items-center justify-center">
+                  <Icon icon="tabler:sun-filled" width="16px" height="16px" />
+                </div>
+              </template>
+            </a-switch>
+          </a-menu-item>
+        </a-menu>
+      </div>
     </div>
     <a-alert class="w-100%" type="info"
       >知慧flow项目处于初步开发阶段，一切演示功能不代表最终成品！</a-alert

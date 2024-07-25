@@ -31,6 +31,15 @@ const getThemeFromLocalStorage = (enabledSystemTheme: boolean = false) => {
 };
 
 /**
+ * 判断是否存在主题存储
+ *
+ * @returns 如果存在主题存储则返回true，否则返回false
+ */
+const hasThemeStorage = () => {
+  return localStorage.getItem("theme") !== null;
+};
+
+/**
  * 将主题信息保存到localStorage中
  *
  * @param theme 主题信息，可以是字符串类型或布尔类型
@@ -43,26 +52,32 @@ const setThemeToLocalStorage = (theme: string | boolean) => {
 };
 
 /**
- * 恢复为浅色主题
+ * 恢复亮色主题
  *
- * @param storage 是否将主题设置保存到本地存储，默认为true
- * @returns 无返回值
+ * @param storage 是否将主题设置存储到localStorage，默认为true
+ *
+ * 这个函数用于恢复亮色主题。首先，它会从body元素中移除"arco-theme"属性，表示不再应用任何主题样式。
+ * 然后，将themeValue.value设置为false，表示当前为亮色主题。
+ * 如果当前有主题存储（通过hasThemeStorage()判断）或者storage参数为true，则会将"light"主题存储到localStorage中。
  */
 const restoreLightTheme = (storage: boolean = true) => {
   document.body.removeAttribute("arco-theme");
   themeValue.value = false;
-  if (storage) setThemeToLocalStorage("light");
+  if (hasThemeStorage() || storage) setThemeToLocalStorage("light");
 };
 
 /**
  * 设置黑色主题
  *
- * @param storage 是否将主题设置保存到本地存储，默认为true
+ * @param storage 是否将主题设置保存到本地存储。默认为true
+ *
+ * 此函数会将页面主题设置为黑色（暗色）模式，并更新全局变量themeValue.value为true。
+ * 如果本地存储中已存在主题设置或storage参数为true，则会将主题设置保存到本地存储中。
  */
 const setBlackTheme = (storage: boolean = true) => {
   document.body.setAttribute("arco-theme", "dark");
   themeValue.value = true;
-  if (storage) setThemeToLocalStorage("dark");
+  if (hasThemeStorage() || storage) setThemeToLocalStorage("dark");
 };
 
 /**
