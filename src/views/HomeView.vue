@@ -1,11 +1,9 @@
 <template>
   <div class="min-h-screen">
     <!-- menu -->
-    <div
-      class="menu-demo flex justify-between bg-[var(--color-bg-2)] border-0 border-b border-solid border-[var(--color-border-2)]"
-    >
+    <div class="menu-demo flex justify-between bg-[var(--color-bg-2)]">
       <div
-        class="flex-none my-5 mx-[14px] h-8 rounded-sm cursor-pointer flex items-center"
+        class="flex-none my-4 mx-[14px] h-8 rounded-sm cursor-pointer flex items-center"
       >
         <span
           style="color: rgb(var(--arcoblue-6))"
@@ -18,10 +16,10 @@
           class="h-full flex-1 flex items-center justify-end sm:hidden text-[var(--color-text-2)]"
         >
           <li class="box-border py-5 h-full">
-            <RouterLink
+            <a
+              @click="enterFlowCenter"
               class="h-full flex items-center px-2 text-[var(--color-text-2)] hover:bg-[var(--color-fill-2)] decoration-none"
-              to="/uvu"
-              >进入flow中心</RouterLink
+              >进入flow中心</a
             >
           </li>
           <li class="box-border py-5 h-full">
@@ -35,7 +33,7 @@
         </ul>
         <a-menu class="lt-sm:w-auto" mode="horizontal">
           <a-menu-item class="lt-sm:hidden" key="1"
-            ><RouterLink to="/uvu">进入flow中心</RouterLink></a-menu-item
+            ><a @click="enterFlowCenter">进入flow中心</a></a-menu-item
           >
           <a-menu-item class="lt-sm:hidden" key="2">会员定价</a-menu-item>
           <a-menu-item key="3">帮助中心</a-menu-item>
@@ -88,16 +86,21 @@
           记录高价值知识笔记，<br class="lt-sm:inline hidden" />
           在巩固自身的同时，获得一笔收入
         </div>
-        <RouterLink to="/user/register">
+        <RouterLink v-if="!hasLogined" to="/user/register">
           <button class="button-8 mt-12 mb-4 scale-120" role="button">
             免费注册
           </button></RouterLink
         >
-        <RouterLink to="/user/login">
+        <RouterLink v-if="!hasLogined" to="/user/login">
           <p class="hover:underline cursor-pointer text-[var(--color-text-2)]">
             已经有账号？点此登录
           </p>
         </RouterLink>
+        <a v-if="hasLogined" @click="enterFlowCenter"
+          ><button class="button-8 mt-12 mb-4 scale-120" role="button">
+            进入flow中心
+          </button></a
+        >
 
         <img
           src="@/assets/images/device-demo.png"
@@ -112,15 +115,32 @@
 import { onMounted, ref, watch } from "vue";
 import { Icon } from "@iconify/vue";
 import { toggleTheme, themeValue } from "@/utils/global/theme";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+
+import { Message } from "@arco-design/web-vue";
+import checkUserAuthentication from "@/utils/global/checkUserAuthentication";
 
 const toggleThemeValue = ref(false);
 watch(themeValue, (newVal) => {
   toggleThemeValue.value = newVal;
 });
 
+const router = useRouter();
+
+function enterFlowCenter() {
+  checkUserAuthentication(
+    () => router.push("/uvu"),
+    () => {
+      router.push("/user/login");
+      Message.error("检测到您还未登录，请先登录！");
+    },
+  );
+}
+
+const hasLogined = ref(false);
 onMounted(() => {
   toggleThemeValue.value = themeValue.value;
+  checkUserAuthentication(() => (hasLogined.value = true));
 });
 </script>
 <style scoped>

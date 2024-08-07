@@ -31,8 +31,8 @@
 .arco-space {
   width: 100%;
 }
-/* 第一个space的item宽度自适应 */
-.arco-space .arco-space-item:nth-child(1) {
+/* 表单中space的第一个item宽度自适应 */
+.arco-form .arco-space .arco-space-item:nth-child(1) {
   flex: 1;
 }
 
@@ -54,4 +54,9 @@ html {
   .arco-menu-inner {
     padding-left: 0px !important;
   }
+}
+
+/* 分割线文字样式 */
+.arco-divider-text {
+  color: var(--color-text-3) !important;
 }

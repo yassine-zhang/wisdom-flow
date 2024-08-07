@@ -11,9 +11,10 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "prepare": "husky install"
+    "prepare": "husky install && cd node_modules/@vue-office/docx && bun run postinstall"
   },
   "dependencies": {
+    "axios": "^1.7.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
     "vue-demi": "^0.14.9",

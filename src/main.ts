@@ -1,5 +1,6 @@
 import "@/assets/main.css";
 import "virtual:uno.css";
+import "axios";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
